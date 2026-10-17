@@ -1,0 +1,36 @@
+// Auto-generated prebuilt APEX Blueprint for external/anonymous-counting-tokens
+// Staged from Extractive APEX package: ext-anonymous-counting-tokens (org.blisslabs.ag.ext.anonymous-counting-tokens)
+
+package {
+    default_visibility: ["//visibility:private"],
+    default_applicable_licenses: ["libact_license"],
+}
+
+license {
+    name: "libact_license",
+    visibility: [":__subpackages__"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["LICENSE"],
+}
+
+filegroup {
+    name: "act-proto",
+    srcs: [
+       "**/*.proto",
+       "act/act.proto",
+    ],
+    visibility: ["//packages/modules/AdServices:__subpackages__"],
+    path: "act",
+}
+
+cc_prebuilt_library_static {
+    name: "libact",
+    min_sdk_version: "30",
+    sdk_version: "current",
+    srcs: ["lib/libact.a"],
+    export_include_dirs: ["."],
+    apex_available: ["com.android.adservices", "com.android.extservices"],
+    visibility: [
+        "//packages/modules/AdServices:__subpackages__",
+    ],
+}
